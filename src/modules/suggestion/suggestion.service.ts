@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { SuggestionDto } from './dto/suggestion.dto';
 import { Repository } from 'typeorm';
 import { SuggestionEntity } from './entities/suggestion.entity';
@@ -13,6 +13,10 @@ export class SuggestionService {
 
   async saveSuggestion(suggestionDto: SuggestionDto) {
     const register = await this.suggestionRepository.save(suggestionDto);
+
+    if (!register) {
+      throw new InternalServerErrorException('Failed to save suggestion');
+    }
 
     return {
       message: 'Suggestion saved successfully',
