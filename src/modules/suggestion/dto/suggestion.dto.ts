@@ -16,7 +16,7 @@ export class SuggestionDto {
   @IsString()
   @MinLength(5)
   @MaxLength(500)
-  description: string;
+  dsDescription: string;
 
   @IsEmail()
   @IsNotEmpty()
