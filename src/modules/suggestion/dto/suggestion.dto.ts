@@ -9,6 +9,8 @@ import {
 export class SuggestionDto {
   @IsString()
   @IsNotEmpty()
+  @MinLength(5)
+  @MaxLength(50)
   dsTitle: string;
 
   @IsString()

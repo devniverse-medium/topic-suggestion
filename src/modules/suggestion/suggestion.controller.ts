@@ -8,6 +8,6 @@ export class SuggestionController {
 
   @Post('send')
   sendSuggestion(@Body() suggestionDto: SuggestionDto) {
-    return { suggestionDto };
+    return this.suggestionService.saveSuggestion(suggestionDto);
   }
 }
